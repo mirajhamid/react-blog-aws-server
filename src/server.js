@@ -39,6 +39,49 @@ app.post("/hello", (req, res) => res.send(`hello ${req.body.name}`));
 //     );
 // });
 
+//This is a common connection component written to connect to db
+const withDB = async (operations, res) => {
+  try {
+    const uri = `mongodb+srv://blog-user-mj:${dbpw}@miraj-cluster.mblki.mongodb.net/react-blog-aws?retryWrites=true&w=majority`;
+    const client = await MongoClient.connect(uri, { useNewUrlParser: true });
+    const db = client.db("react-blog-aws");
+
+    //will return to the calling function
+    await operations(db);
+
+    client.close();
+  } catch (error) {
+    res.status(500).json({ message: "Error connecting to db", error });
+  }
+};
+
+app.post("/api/articles-withdb-common/:name/upvote", async (req, res) => {
+  withDB(async (db) => {
+    const articleName = req.params.name;
+
+    //find info
+    const articleInfo = await db
+      .collection("articlesInfo")
+      .findOne({ name: articleName });
+
+    //update info
+    await db.collection("articlesInfo").updateOne(
+      { name: articleName },
+      {
+        $set: {
+          upvote: articleInfo.upvote + 1,
+        },
+      }
+    );
+
+    const updatedArticleInfo = await db
+      .collection("articlesInfo")
+      .findOne({ name: articleName });
+
+    res.status(200).json(updatedArticleInfo);
+  }, res);
+});
+
 app.post("/api/articles/:name/upvote", async (req, res) => {
   try {
     const articleName = req.params.name;
