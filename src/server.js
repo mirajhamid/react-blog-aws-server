@@ -55,6 +55,7 @@ const withDB = async (operations, res) => {
   }
 };
 
+//updating data using common db connection config
 app.post("/api/articles-withdb-common/:name/upvote", async (req, res) => {
   withDB(async (db) => {
     const articleName = req.params.name;
@@ -82,6 +83,7 @@ app.post("/api/articles-withdb-common/:name/upvote", async (req, res) => {
   }, res);
 });
 
+//updating data using onfly db connection config
 app.post("/api/articles/:name/upvote", async (req, res) => {
   try {
     const articleName = req.params.name;
@@ -164,6 +166,7 @@ app.post("/api/articles/:name/add-comment", async (req, res) => {
   }
 });
 
+// using proper promise
 // app.post("/api/articles-mongodb-onfly/:name", async (req, res) => {
 //   const articleName = req.params.name;
 //   const uri =
