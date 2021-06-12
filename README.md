@@ -9,10 +9,22 @@ This is a basic blog site backEnd which use basic react features and AWS to up a
 - > npm install --save express
 - Intsalled babel to use ES6 in Node.js
 - > npm install --save-dev @babel/core @babel/node @babel/preset-env
+- Implement get and post in server we use body-parser to read post data
+- > npm install --save body-parser
+- Install nodemon for restart app when change taken place
+- > npm install --save-dev nodemon
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npx nodemon --exec npx babel-node src/server.js`
+
+To run this lenghty command to start server using nodemon you can simply use
+
+> npm start
+
+which is configured in package.json
 
 ### `npx babel-node src/server.js`
 
