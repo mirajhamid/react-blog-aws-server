@@ -14,6 +14,11 @@ This is a basic blog site backEnd which use basic react features and AWS to up a
 - Install nodemon for restart app when change taken place
 - > npm install --save-dev nodemon
 
+### Phase02
+
+- MongoDB via mongose
+  > npm install --save-dev mongodb
+
 ## Available Scripts
 
 In the project directory, you can run:
