@@ -8,7 +8,7 @@ const app = express();
 //here we gonna use the parser to read the request body with the any path
 app.use(bodyParser.json());
 
-const dbpw = "c854hzCRmr3zQA6Z";
+const dbpw = "222";
 //mock articleInfo data
 const articlesInfo = {
   "learn-react": {
