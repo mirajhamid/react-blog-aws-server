@@ -8,7 +8,7 @@ const app = express();
 //here we gonna use the parser to read the request body with the any path
 app.use(bodyParser.json());
 
-const dbpw = "test123";
+const dbpw = "c854hzCRmr3zQA6Z";
 //mock articleInfo data
 const articlesInfo = {
   "learn-react": {
@@ -194,7 +194,7 @@ app.post("/api/articles/:name/add-comment", async (req, res) => {
 //   );
 // });
 
-app.post("/api/articles-mongodb-onfly/:name", async (req, res) => {
+app.get("/api/articles-mongodb-onfly/:name", async (req, res) => {
   try {
     const articleName = req.params.name;
     const uri = `mongodb+srv://blog-user-mj:${dbpw}@miraj-cluster.mblki.mongodb.net/react-blog-aws?retryWrites=true&w=majority`;
