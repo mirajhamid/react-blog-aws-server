@@ -4,11 +4,18 @@ import bodyParser from "body-parser";
 //using mongo client
 import { MongoClient } from "mongodb";
 
+//----------make use of frond end build
+import path from "path";
+
 const app = express();
+
+//----------make use of frond end build
+app.use(express.static(path.join(__dirname, "/build")));
+
 //here we gonna use the parser to read the request body with the any path
 app.use(bodyParser.json());
 
-const dbpw = "222";
+const dbpw = "7a2HrUVo78YJED43";
 //mock articleInfo data
 const articlesInfo = {
   "learn-react": {
@@ -209,6 +216,12 @@ app.get("/api/articles-mongodb-onfly/:name", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Error connecting to db", error });
   }
+});
+
+//----------make use of frond end build
+//for anypath load the react-blog-aws build index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
 app.listen(8000, () => console.log("listening to port 8000"));
