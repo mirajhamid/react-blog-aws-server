@@ -52,7 +52,7 @@ This is a basic blog site backEnd which use basic react features and AWS to up a
   then add HTTP rule > make it source from anywhere
   now use public dns and access
 
-  --in EC2
+  --in EC2 fe_and_be_same
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
   . ~/.nvm/nvm.sh
   nvm install 14.17.0 OR nvm install node
