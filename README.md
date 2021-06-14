@@ -52,6 +52,17 @@ This is a basic blog site backEnd which use basic react features and AWS to up a
   then add HTTP rule > make it source from anywhere
   now use public dns and access
 
+  --in EC2
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  . ~/.nvm/nvm.sh
+  nvm install 14.17.0 OR nvm install node
+  sudo yum install git -y
+  git clone https://github.com/mirajhamid/react-blog-aws-server.git
+  cd react-blog-aws-server
+  git checkout phase02
+  npm install
+  if error occured npm i -g npm@next-7
+
 ## Available Scripts
 
 In the project directory, you can run:
